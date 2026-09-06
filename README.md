@@ -2,9 +2,9 @@
 
 ## 📌 Project Overview
 
-This project builds a safe virtual cybersecurity lab using VirtualBox and Kali Linux.
+This project builds a safe virtual cybersecurity lab using Oracle VirtualBox and Kali Linux.
 
-The goal is to create a secure space to run security tools, scan networks, hunt for system flaws, and practice defense methods repeatedly without any real-world risk.
+The goal is to create a safe and controlled space to practice security testing tools and methods repeatedly without any real-world risk. 
 
 ---
 
@@ -18,7 +18,7 @@ The main objectives of this project are to:
 - Build a private NAT Network.
 - Configure network connectivity for Kali Linux.
 - Assign a consistent IP address to the Kali VM.
-- Test network connectivity and DNS resolution.
+- Verify network connectivity and DNS resolution.
 - Create a clean VM snapshot for quick recovery.
 
 
@@ -26,7 +26,7 @@ The main objectives of this project are to:
 
 ## 🛡️ Purpose of the Lab
 
-The lab is in an isolated and controlled environment for secured cybersecurity learning and testing.
+The lab is in an isolated and controlled environment for secure cybersecurity learning and testing only.
 
 Activities include:
 - Network reconnaissance
@@ -46,7 +46,7 @@ Activities include:
 ![](1-screenshot-title-image.png)
 
 
-Additional target machines can be added to the same virtual network in future projects.
+Additional target machines can be added to the same virtual network in future projects by connecting to the same NAT Network.
 
 ---
 
@@ -54,10 +54,10 @@ Additional target machines can be added to the same virtual network in future pr
 
 | 🧩 Component       | ⚙️ Configuration   |
 | ------------------ | ------------------  |
-| 🖥️ Host OS         | Windows 10         |
-| 🧠 Host RAM        | 8 GB               |
+| 🖥️ Host OS         | Windows 11         |
+| 🧠 Host RAM        | 16 GB               |
 | ⚡ Processor       | Intel Core i7      |
-| 🧰 Hypervisor      | VirtualBox 7.2  |
+| 🧰 Hypervisor      | VirtualBox 7.1  |
 | 🐉 Security OS     | Kali Linux 2026.2  |
 | 🧠 Kali RAM        | 2048 MB            |
 | 🌐 Virtual Network | NAT Network        |
@@ -73,15 +73,15 @@ Additional target machines can be added to the same virtual network in future pr
 
 ## Step 1. Install 7-Zip
 
-7-Zip was installed to extract the Kali Linux virtual-machine package, which may be distributed as a `.7z` archive.
+7-Zip was installed to extract the Kali Linux virtual machine package, which may be distributed as a `.7z` archive.
 
 **Tool:** 7-Zip
 
 ---
 
-## Step 2. Install VirtualBox
+## Step 2. Install VirtualBox & Download Kali Linux
 
-VirtualBox was installed as the hypervisor.
+Oracle VirtualBox was installed as the hypervisor.
 
 ---
 
@@ -106,7 +106,7 @@ This will allow future attacker and target VMs to communicate within the lab.
 
 ## Step 4. Import Kali Linux
 
-The Kali Linux virtual machine was downloaded from the official Kali Linux website and imported into VirtualBox.
+A pre-built Kali Linux virtual machine image file was downloaded and imported into VirtualBox to create the virtual machine (VM).
 
 The VM network adapter was configured as follows:
 
@@ -114,7 +114,6 @@ The VM network adapter was configured as follows:
 Adapter 1
 Attached to: NAT Network
 Network:     NatNetwork
-Adapter Type: Intel PRO/1000 MT Desktop
 ```
 
 The VM was allocated:
@@ -123,7 +122,6 @@ The VM was allocated:
 RAM: 2048 MB
 ```
 ![](3-screenshot-kali-linux.png)
-A shared folder was also configured for transferring required files between the host operating system and the Kali VM.
 
 
 
@@ -133,7 +131,7 @@ A shared folder was also configured for transferring required files between the 
 
 The Kali Linux network configuration was checked and configured with a consistent IPv4 address.
 
-Example configuration:
+Configuration:
 
 ```text
 IP Address: 10.0.0.2
@@ -142,7 +140,7 @@ Gateway: 10.0.0.1
 DNS: 8.8.8.8
 ```
 
-A consistent IP address makes it easier to document the lab and reference the Kali machine in future exercises.
+A consistent IP address makes it easier to document the lab and identify the Kali machine in future exercises.
 
 ![](4-screenshot-kali-network-settings.png)
 
@@ -152,15 +150,15 @@ A consistent IP address makes it easier to document the lab and reference the Ka
 
 After completing the initial configuration, a VirtualBox snapshot was created.
 
-Example snapshot name:
+Snapshot Name:
 
 ```text
-Clean Kali - Network Setup
+Clean Kali
 ```
 
 The snapshot represents the clean baseline of the laboratory.
 
-If a future exercise changes or damages the VM configuration, the machine can be restored to this baseline.
+If a future exercise changes or damages the VM configuration, the machine can be restored to this recovery point.
 
 
 ---
@@ -205,7 +203,7 @@ One workaround used during this lab was:
 sudo nmcli connection modify "Wired connection 1" ipv4.dad-timeout 0
 ```
 
-The network connection was then restarted/rebooted and connectivity was tested again.
+The network connection was then restarted/rebooted, and connectivity was tested again.
 
 > **Important:** Network interface and connection names may differ between systems. Students should first identify their actual connection name before running an `nmcli` command.
 
@@ -237,8 +235,6 @@ The most important concepts I learned include:
 
 ### 1. NAT vs NAT Network
 
-A standard NAT configuration and a NAT Network serve different purposes.
-
 A NAT Network allows multiple VMs connected to the same virtual network to communicate with one another while providing network address translation for external connectivity.
 
 This makes it useful for building a multi-machine cybersecurity laboratory.
@@ -253,9 +249,10 @@ I learned how to configure and verify IPv4 addressing, subnet masks, gateways, a
 
 ### 4. VM Snapshots
 
-I learned that a clean snapshot should be created **before performing risky or experimental activities**.
+I learned that a clean snapshot should be created **before performing risky or experimental activities**. 
 
-This provides a known-good recovery point for future cybersecurity exercises.
+This is to do if there is any changes that damage the virtual machine.
+
 
 ### 5. Documentation
 
@@ -279,8 +276,8 @@ This laboratory is intended strictly for education purposes only.
 
 # 👤 Author
 
-**Waqas Karim**\
-Cybersecurity Professional B082
+**Vivi Hanna Handison**\
+Cybersecurity Professional B083
 
 LinkedIn: [https://www.linkedin.com/in/waqaskarim/](https://www.linkedin.com/in/waqaskarim/)
 
