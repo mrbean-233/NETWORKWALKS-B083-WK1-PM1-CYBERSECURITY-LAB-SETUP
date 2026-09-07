@@ -43,7 +43,7 @@ Activities include:
 
 ## 🏗️ Lab Architecture
 
-![](1-screenshot-title-image.png)
+![](https://github.com/mrbean-233/NETWORKWALKS-B083-WK1-PM1-CYBERSECURITY-LAB-SETUP/blob/main/Architecture.jpeg)
 
 
 Additional target machines can be added to the same virtual network in future projects by connecting to the same NAT Network.
@@ -95,7 +95,7 @@ IPv4 Prefix:  10.0.0.0/24
 DHCP:         Enabled
 IPv6:         Disabled
 
-![](2-screenshot-network-settings-1.png)
+![](https://github.com/mrbean-233/NETWORKWALKS-B083-WK1-PM1-CYBERSECURITY-LAB-SETUP/blob/main/VMNATNetwork.jpeg)
 
 A **NAT Network** was selected because multiple virtual machines connected to the same NAT Network can communicate with one another while also having outbound network connectivity.
 
@@ -121,7 +121,7 @@ The VM was allocated:
 ```text
 RAM: 2048 MB
 ```
-![](3-screenshot-kali-linux.png)
+![](https://github.com/mrbean-233/NETWORKWALKS-B083-WK1-PM1-CYBERSECURITY-LAB-SETUP/blob/main/KaliNATNetwork.jpeg)
 
 
 
@@ -142,7 +142,7 @@ DNS: 8.8.8.8
 
 A consistent IP address makes it easier to document the lab and identify the Kali machine in future exercises.
 
-![](4-screenshot-kali-network-settings.png)
+![](https://github.com/mrbean-233/NETWORKWALKS-B083-WK1-PM1-CYBERSECURITY-LAB-SETUP/blob/main/KaliNetworkConfig.jpeg)
 
 ---
 
@@ -155,6 +155,7 @@ Snapshot Name:
 ```text
 Clean Kali
 ```
+![](https://github.com/mrbean-233/NETWORKWALKS-B083-WK1-PM1-CYBERSECURITY-LAB-SETUP/blob/main/CleanSnapshot.jpeg)
 
 The snapshot represents the clean baseline of the laboratory.
 
@@ -170,11 +171,12 @@ If a future exercise changes or damages the VM configuration, the machine can be
 | 🌐 Check IP address           | `ip a`                          | Correct Kali IP displayed       |
 | 📡 Test gateway               | `ping 10.0.0.1`                 | Successful replies              |
 | 🌍 Test Internet connectivity | `ping 8.8.8.8`                  | Successful replies              |
-| 🔎 Test DNS resolution        | `nslookup networkwalks.com`     | Domain resolves                 |
+| 🔎 Test DNS resolution        | `nslookup google.com`           | Domain resolves                 |
 | 🧰 Verify Nmap                | `nmap --version`                | Nmap version displayed          |
-| 🔄 Verify snapshot            | Restore snapshot and run `ip a` | Baseline configuration restored |
 
-### Example Results
+
+### Results
+Video demonstration can be seen in the LinkedIn post (LinkedIn Link in the Author Section)
 
 ```text
 IP Address:
@@ -191,43 +193,26 @@ DNS:
 
 # 🐞 Problems Encountered & Solutions
 
-Documenting problems is an important part of the project.
+The problem I faced during the setup: 
 
-## Problem 1. Internet Connectivity After Static IP Configuration
+## Internet Connectivity After Static IP Configuration
+![]()
 
-After manually configuring the IPv4 settings, Internet connectivity may fail depending on the Kali/NetworkManager configuration.
+After manually configuring the IPv4 settings, internet connectivity may fail because NetworkManager misinterprets a virtual network echo as an IP address conflict and automatically drops the connection. 
 
-One workaround used during this lab was:
+The workaround I used to solve this problem:
 
 ```bash
 sudo nmcli connection modify "Wired connection 1" ipv4.dad-timeout 0
 ```
 
-The network connection was then restarted/rebooted, and connectivity was tested again.
+The network connection was then restarted/rebooted, and connectivity was verified using ping and browser. 
 
-> **Important:** Network interface and connection names may differ between systems. Students should first identify their actual connection name before running an `nmcli` command.
-
----
-
-## Problem 2. VirtualBox VT-x / Virtualization Error
-
-The VM initially failed to start because hardware virtualization was disabled in the system firmware/BIOS.
-
-The issue was resolved by:
-
-1. Restarting the computer.
-2. Entering BIOS/UEFI settings.
-3. Enabling Intel VT-x / hardware virtualization.
-4. Saving the configuration.
-5. Restarting the computer.
-6. Starting the Kali VM again.
-
-After enabling virtualization, the VM started successfully.
-
+> **Important:** Network interface and connection names may differ between systems. Identify the actual connection name before running an `nmcli` command. In this case: Wired connection 1. 
 
 ---
 
-# 💡 What I Learned
+# 💡 Key Learnings
 
 Through this project, I learned how to create and configure a virtual environment for cybersecurity practice.
 
@@ -235,23 +220,23 @@ The most important concepts I learned include:
 
 ### 1. NAT vs NAT Network
 
-A NAT Network allows multiple VMs connected to the same virtual network to communicate with one another while providing network address translation for external connectivity.
+A NAT network enables communication between VMs connected to the same virtual network while providing network address translation for external connectivity. 
 
-This makes it useful for building a multi-machine cybersecurity laboratory.
 
 ### 2. Virtual Machine Networking
 
-I learned how VirtualBox virtual network adapters connect virtual machines to different types of networks and how network configuration affects communication between machines.
+I learned how VirtualBox virtual network adapters connect virtual machines to different types of networks and how network configuration affects communication between machines. By choosing NAT Network, my VMs can talk to each other and safely access the internet, but the real world cannot initiate a connection to them.
 
 ### 3. Static IP Configuration
 
 I learned how to configure and verify IPv4 addressing, subnet masks, gateways, and DNS settings in Kali Linux.
 
+
 ### 4. VM Snapshots
 
 I learned that a clean snapshot should be created **before performing risky or experimental activities**. 
 
-This is to do if there is any changes that damage the virtual machine.
+This is necessary in case changes damage the virtual machine.
 
 
 ### 5. Documentation
@@ -277,9 +262,7 @@ This laboratory is intended strictly for education purposes only.
 # 👤 Author
 
 **Vivi Hanna Handison**\
-Cybersecurity Professional B083
-
-LinkedIn: [https://www.linkedin.com/in/waqaskarim/](https://www.linkedin.com/in/waqaskarim/)
+LinkedIn: [https://www.linkedin.com/in/vivihanna](https://www.linkedin.com/in/vivihanna)
 
 ---
 
